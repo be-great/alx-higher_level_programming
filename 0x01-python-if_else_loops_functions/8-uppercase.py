@@ -9,4 +9,4 @@ def uppercase(str):
     for i in range(len(str)):
         if islower(str[i]):
             str[i] = chr(ord(str[i]) - 32)
-        print(str[i], end="")
+        print("{}".format(str[i]), end="")
