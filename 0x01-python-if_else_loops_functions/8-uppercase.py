@@ -5,8 +5,10 @@ def islower(c):
     return False
 
 
-def uppercase(str):
-    for i in range(len(str)):
-        if islower(str[i]):
-            str[i] = chr(ord(str[i]) - 32)
-        print("{}".format(str[i]), end="")
+def uppercase(s):
+    for char in s:
+        if islower(char):
+            print(chr(ord(char) - 32), end='')
+        else:
+            print(char, end='')
+    print()
