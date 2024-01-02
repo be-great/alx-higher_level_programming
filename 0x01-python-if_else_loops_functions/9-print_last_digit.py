@@ -5,3 +5,4 @@ def print_last_digit(number):
     else:
         digit = numbe4 % -10
     print("{}".format(digit), end='')
+    return digit
