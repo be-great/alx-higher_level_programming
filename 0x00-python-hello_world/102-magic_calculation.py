@@ -11,5 +11,4 @@ import dis
 
 
 def magic_calculation(a, b):
-    re = b**a
-    return re + 98
+    return b ** a + 98
