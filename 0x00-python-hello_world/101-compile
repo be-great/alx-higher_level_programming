@@ -1,0 +1,2 @@
+#!/bin/bash
+python3 -m py_compile $PYFILE && PYFILE_NO_EXTENSION=$(basename "$PYFILE" .py) && mv __pycache__/$PYFILE_NO_EXTENSION.cpython-*.pyc $PYFILE'c'
