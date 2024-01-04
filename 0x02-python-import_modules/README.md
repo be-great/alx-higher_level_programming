@@ -14,7 +14,7 @@
 |File | description|
 |---|---|
 |0-add.py, add_0.py |import function from other file|
-|1-run_inline|Shell script that runs Python code.The Python code will be saved in the environment variable $PYCODE|
+|calculator_1.py 1-calculator.py |Shell script that runs Python code.The Python code will be saved in the environment variable $PYCODE|
 |2-print.py |Hello, print |
 |3-print_number.py| Print integer |
 |4-print_float.py| Print float .You have to use f-strings|
