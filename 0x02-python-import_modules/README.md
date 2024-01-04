@@ -15,7 +15,7 @@
 |---|---|
 |0-add.py, add_0.py |import function from other file|
 |calculator_1.py 1-calculator.py |Shell script that runs Python code.The Python code will be saved in the environment variable $PYCODE|
-|2-print.py |Hello, print |
+|2-args.py  |program that print number of arguments and the arguments |
 |3-print_number.py| Print integer |
 |4-print_float.py| Print float .You have to use f-strings|
 |5-print_string.py|Print string |
