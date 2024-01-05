@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+new code : import part , for loop part
+"""
 
 
 def magic_calculation(a, b):
