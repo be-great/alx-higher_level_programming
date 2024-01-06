@@ -81,7 +81,7 @@ Using : arr1 = []
 |File | description|
 |---|---|
 |0-print_list_integer.py| function that prints all integers of a list.|
-|1-element_at.py||
+|1-element_at.py| function that retrieves an element from a list like in C.|
 |2-replace_in_list.py||
 |3-print_reversed_list_integer.py||
 |4-new_in_list.py||
