@@ -6,7 +6,7 @@ def add_tuple(tuple_a=(), tuple_b=()):
     tuple_merge = ()
     for i in range(2):
         if i > len1 - 1 and i > len2 - 1:
-            tuple_merge[i] = 0
+            tuple_merge += (0,)
         elif i > len1 - 1:
             tuple_merge += (tuple_b[i],)
         elif i > len2 - 1:
