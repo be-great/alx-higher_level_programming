@@ -87,8 +87,8 @@ Using : arr1 = []
 |4-new_in_list.py|function that replaces an element in a list at a specific position without modifying the original list (like in C).|
 |5-no_c.py|function that removes all characters c and C from a string.|
 |6-print_matrix_integer.py| function that prints a matrix of integers.|
-|7-add_tuple.py|function that adds 2 tuples.|
-|8-multiple_returns.py||
+|7-add_tuple.py| function that adds 2 tuples.|
+|8-multiple_returns.py|  function that adds 2 tuples.-|
 |9-max_integer.py||
 |10-divisible_by_2.py||
 |11-delete_at.py||
