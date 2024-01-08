@@ -1,6 +1,5 @@
 #include "lists.h"
-#include <stdio.h>
-#include <stdlib.h>
+
 /**
  * get_nodeint_at_index - Function that returns
  * the nth node of a listint_t linked list.
@@ -81,7 +80,7 @@ int listint_len(const listint_t *h)
 int is_palindrome(listint_t **head)
 {
 	int start_indx, end_indx, linkend_length;
-	listint_t *link_begin, *link_end, *reverse_link;
+	listint_t *reverse_link;
 	listint_t *current_s, *current_e;
 
 	/* Case the node is empty */
