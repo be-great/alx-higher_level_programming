@@ -61,19 +61,13 @@ int is_palindrome(listint_t **head)
 	listint_t *reverse_link;
 	listint_t *current_s, *current_e;
 
-	/* Case the node is empty */
-	if (*head == NULL)
+	/* Case the node is empty and 1 element case*/
+	if (*head == NULL || (*head)->next == NULL)
 		return (1);
 
 	linkend_length = listint_len(*head);
 	start_indx = 0;
 	end_indx = linkend_length - 1;
-
-	/* 1 element case */
-	if (linkend_length == 1)
-	{
-		return (1);
-	}
 
 	reverse_link = reverse_listint(*head);
 
