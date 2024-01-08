@@ -22,7 +22,33 @@ listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 	return (tempnode);
 }
 
+/**
+* reverse_listint - Function that makes a copy of a reversed
+* linked list
+* @head: The linked head
+*
+* Return: Pointer to the first node of the reversed list
+*/
+listint_t *reverse_listint(const listint_t *head)
+{
+	listint_t *prev = NULL, *current = (listint_t *)head;
+	listint_t *new_node;
 
+	while (current != NULL)
+	{
+		new_node = malloc(sizeof(listint_t));
+		if (new_node == NULL)
+			exit(-1);
+
+		new_node->n = current->n;
+		new_node->next = prev;
+		prev = new_node;
+
+		current = current->next;
+	}
+	free(current);
+	return (prev);
+}
 
 /**
 * listint_len - Function that returns the number
@@ -54,6 +80,8 @@ int listint_len(const listint_t *h)
 int is_palindrome(listint_t **head)
 {
 	int start_indx, end_indx, linkend_length;
+
+	listint_t *reverse_link;
 	listint_t *current_s, *current_e;
 
 	/* Case the node is empty */
@@ -70,20 +98,24 @@ int is_palindrome(listint_t **head)
 		return (1);
 	}
 
-	/* Other cases */
+	reverse_link = reverse_listint(*head);
 
+	/* Other cases */
 	current_s = *head;
-	current_e = get_nodeint_at_index(*head, end_indx);
+	current_e = reverse_link;
 
 	while (start_indx < end_indx)
 	{
 		if (current_s->n != current_e->n)
 		{
+			free_listint(reverse_link);
 			return (0);
 		}
 		start_indx++, end_indx--;
 		current_s = current_s->next;
-		current_e = get_nodeint_at_index(*head, end_indx);
+		current_e = current_e->next;
 	}
+
+	free_listint(reverse_link);
 	return (1);
 }
