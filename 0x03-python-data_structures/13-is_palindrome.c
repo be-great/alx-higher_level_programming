@@ -1,67 +1,66 @@
 #include "lists.h"
 
 /**
-* reverse_listint - Reverses a linked list.
-* @head: Pointer to the head of the linked list.
-* Return: Pointer to the new head of the reversed list.
-*/
+ * reverse_listint - Reverses a linked list.
+ * @head: Pointer to the head of the linked list.
+ * Return: Pointer to the new head of the reversed list.
+ */
 listint_t *reverse_listint(listint_t *head)
 {
-	listint_t *prev = NULL, *current = head, *next;
+    listint_t *prev = NULL, *current = head, *next;
 
-	while (current != NULL)
-	{
-		next = current->next;
-		current->next = prev;
-		prev = current;
-		current = next;
-	}
+    while (current != NULL)
+    {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
 
-	return (prev);
+    return prev;
 }
 
 /**
-* compare_lists - Compares two linked lists for equality.
-* @list1: Pointer to the first linked list.
-* @list2: Pointer to the second linked list.
-* Return: 1 if lists are equal, 0 otherwise.
-*/
-int compare_lists(listint_t *list1, listint_t *list2)
-{
-	while (list1 != NULL && list2 != NULL)
-	{
-		if (list1->n != list2->n)
-			return (0);
-
-		list1 = list1->next;
-		list2 = list2->next;
-	}
-
-	return (1);
-}
-
-/**
-* is_palindrome - Checks if a singly linked list is a palindrome.
-* @head: Pointer to the head of the linked list.
-* Return: 1 if it's true, 0 if it's false.
-*/
+ * is_palindrome - Checks if a singly linked list is a palindrome.
+ * @head: Pointer to the head of the linked list.
+ * Return: 1 if it's true, 0 if it's false.
+ */
 int is_palindrome(listint_t **head)
 {
-	if (*head == NULL || (*head)->next == NULL)
-		return (1);
+    if (*head == NULL || (*head)->next == NULL)
+        return 1;
 
-	listint_t *slow = *head, *fast = *head, *second_head;
+    listint_t *slow = *head, *fast = *head, *second_head = NULL, *temp;
 
-	while (fast != NULL && fast->next != NULL)
-	{
-		slow = slow->next;
-		fast = fast->next->next;
-	}
+    while (fast != NULL && fast->next != NULL)
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
 
-	second_head = reverse_listint(slow);
+    temp = slow;
+    while (temp != NULL)
+    {
+        listint_t *new_node = malloc(sizeof(listint_t));
+        if (new_node == NULL)
+            exit(-1);
 
-	if (!compare_lists(*head, second_head))
-		return (0);
+        new_node->n = temp->n;
+        new_node->next = second_head;
+        second_head = new_node;
 
-	return (1);
+        temp = temp->next;
+    }
+
+    temp = *head;
+    while (second_head != NULL)
+    {
+        if (temp->n != second_head->n)
+            return 0;
+
+        temp = temp->next;
+        second_head = second_head->next;
+    }
+
+    return 1;
 }
