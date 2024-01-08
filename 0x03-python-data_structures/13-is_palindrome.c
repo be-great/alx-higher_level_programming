@@ -1,94 +1,67 @@
 #include "lists.h"
 
 /**
-* reverse_listint - Function that makes a copy of a reversed
-* linked list
-* @head: The linked head
-* @half_indx: half the index
-* Return: Pointer to the first node of the reversed list
+* reverse_listint - Reverses a linked list.
+* @head: Pointer to the head of the linked list.
+* Return: Pointer to the new head of the reversed list.
 */
-listint_t *reverse_listint(const listint_t *head, int half_indx)
+listint_t *reverse_listint(listint_t *head)
 {
-	listint_t *prev = NULL, *current = (listint_t *)head;
-	listint_t *new_node;
-	int i = 0;
+	listint_t *prev = NULL, *current = head, *next;
 
-	while (current != NULL && i < half_indx)
+	while (current != NULL)
 	{
-		new_node = malloc(sizeof(listint_t));
-		if (new_node == NULL)
-			exit(-1);
-
-		new_node->n = current->n;
-		new_node->next = prev;
-		prev = new_node;
-
-		current = current->next;
-		i++;
+		next = current->next;
+		current->next = prev;
+		prev = current;
+		current = next;
 	}
 
 	return (prev);
 }
 
 /**
-* listint_len - Function that returns the number
-* of elements in a linked listint_t list.
-* @h: The header
-*
-* Return: Number of elements in the list
+* compare_lists - Compares two linked lists for equality.
+* @list1: Pointer to the first linked list.
+* @list2: Pointer to the second linked list.
+* Return: 1 if lists are equal, 0 otherwise.
 */
-int listint_len(const listint_t *h)
+int compare_lists(listint_t *list1, listint_t *list2)
 {
-	int size = 0;
-
-	while (h != NULL)
+	while (list1 != NULL && list2 != NULL)
 	{
-		h = h->next;
-		size++;
+		if (list1->n != list2->n)
+			return (0);
+
+		list1 = list1->next;
+		list2 = list2->next;
 	}
-	return (size);
+
+	return (1);
 }
 
 /**
-* is_palindrome - Function in C that checks if
-* a singly linked list is a palindrome.
-* @head: The head of the linked list
-*
-* Return: 1 if it's true, 0 if it's false
-* Empty list is palindrome
+* is_palindrome - Checks if a singly linked list is a palindrome.
+* @head: Pointer to the head of the linked list.
+* Return: 1 if it's true, 0 if it's false.
 */
 int is_palindrome(listint_t **head)
 {
-	int start_indx, end_indx, linkend_length;
-
-	listint_t *reverse_link;
-	listint_t *current_s, *current_e;
-
-	/* Case the node is empty and 1 element case*/
 	if (*head == NULL || (*head)->next == NULL)
 		return (1);
 
-	linkend_length = listint_len(*head);
-	start_indx = 0;
-	end_indx = linkend_length - 1;
+	listint_t *slow = *head, *fast = *head, *second_head;
 
-	reverse_link = reverse_listint(*head, linkend_length / 2);
-
-	/* Other cases */
-	current_s = *head;
-	current_e = reverse_link;
-
-	while (start_indx < end_indx)
+	while (fast != NULL && fast->next != NULL)
 	{
-		if (current_s->n != current_e->n)
-		{
-			free_listint(reverse_link);
-			return (0);
-		}
-		start_indx++, end_indx--;
-		current_s = current_s->next;
-		current_e = current_e->next;
+		slow = slow->next;
+		fast = fast->next->next;
 	}
-	free_listint(reverse_link);
+
+	second_head = reverse_listint(slow);
+
+	if (!compare_lists(*head, second_head))
+		return (0);
+
 	return (1);
 }
