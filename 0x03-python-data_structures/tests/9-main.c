@@ -21,3 +21,7 @@ my_list = []
 max_value = max_integer(my_list)
 print("Max: {}".format(max_value))
 
+my_list = None
+max_value = max_integer(my_list)
+print("Max: {}".format(max_value))
+
