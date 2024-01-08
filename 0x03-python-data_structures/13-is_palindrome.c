@@ -4,15 +4,16 @@
 * reverse_listint - Function that makes a copy of a reversed
 * linked list
 * @head: The linked head
-*
+* @half_indx: half the index
 * Return: Pointer to the first node of the reversed list
 */
-listint_t *reverse_listint(const listint_t *head)
+listint_t *reverse_listint(const listint_t *head, int half_indx)
 {
 	listint_t *prev = NULL, *current = (listint_t *)head;
 	listint_t *new_node;
+	int i = 0;
 
-	while (current != NULL)
+	while (current != NULL && i < half_indx)
 	{
 		new_node = malloc(sizeof(listint_t));
 		if (new_node == NULL)
@@ -23,8 +24,9 @@ listint_t *reverse_listint(const listint_t *head)
 		prev = new_node;
 
 		current = current->next;
+		i++;
 	}
-	free(current);
+
 	return (prev);
 }
 
@@ -58,6 +60,7 @@ int listint_len(const listint_t *h)
 int is_palindrome(listint_t **head)
 {
 	int start_indx, end_indx, linkend_length;
+
 	listint_t *reverse_link;
 	listint_t *current_s, *current_e;
 
@@ -69,7 +72,7 @@ int is_palindrome(listint_t **head)
 	start_indx = 0;
 	end_indx = linkend_length - 1;
 
-	reverse_link = reverse_listint(*head);
+	reverse_link = reverse_listint(*head, linkend_length / 2);
 
 	/* Other cases */
 	current_s = *head;
