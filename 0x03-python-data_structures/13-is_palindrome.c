@@ -1,28 +1,6 @@
 #include "lists.h"
 
 /**
-* get_nodeint_at_index - Function that returns
-* the nth node of a listint_t linked list.
-* @head: The header of the link list
-* @index: The index to check
-*
-* Return: The node or NULL if not found
-*/
-listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
-{
-	listint_t *tempnode;
-	size_t size = 0;
-
-	tempnode = head;
-	while (size != index && tempnode != NULL)
-	{
-		tempnode = tempnode->next;
-		size++;
-	}
-	return (tempnode);
-}
-
-/**
 * reverse_listint - Function that makes a copy of a reversed
 * linked list
 * @head: The linked head
@@ -80,7 +58,6 @@ int listint_len(const listint_t *h)
 int is_palindrome(listint_t **head)
 {
 	int start_indx, end_indx, linkend_length;
-
 	listint_t *reverse_link;
 	listint_t *current_s, *current_e;
 
@@ -115,7 +92,6 @@ int is_palindrome(listint_t **head)
 		current_s = current_s->next;
 		current_e = current_e->next;
 	}
-
 	free_listint(reverse_link);
 	return (1);
 }
