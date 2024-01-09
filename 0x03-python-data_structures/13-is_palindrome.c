@@ -49,27 +49,42 @@ int compare_lists(listint_t *list1, listint_t *list2)
  */
 int is_palindrome(listint_t **head)
 {
+	listint_t *slow = *head, *fast = *head, *temp = *head, *dup = NULL;
+
 	if (*head == NULL || (*head)->next == NULL)
 		return (1);
 
-	listint_t *slow = *head, *fast = *head, *second_head;
-
-	while (fast != NULL && fast->next != NULL)
+	while (1)
 	{
-		slow = slow->next;
 		fast = fast->next->next;
+		if (!fast)
+		{
+			dup = slow->next;
+			break;
+		}
+		if (!fast->next)
+		{
+			dup = slow->next->next;
+			break;
+		}
+		slow = slow->next;
 	}
 
-	second_head = slow->next;
+	reverse_listint(&dup);
 
-	reverse_listint(&second_head);
-
-	if (!compare_lists(*head, second_head))
+	while (dup && temp)
 	{
-		reverse_listint(&second_head);
-		return (0);
+		if (temp->n == dup->n)
+		{
+			dup = dup->next;
+			temp = temp->next;
+		}
+		else
+			return (0);
 	}
 
-	reverse_listint(&second_head); /* Re-reverse the second half */
-	return (1);
+	if (!dup)
+		return (1);
+
+	return (0);
 }
