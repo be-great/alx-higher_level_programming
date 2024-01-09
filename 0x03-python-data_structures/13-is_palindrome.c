@@ -1,73 +1,120 @@
 #include "lists.h"
 
 /**
-* find_second_head - Finds the second half of the linked list.
-* @head: Pointer to the head of the linked list.
-* Return: Pointer to the second half of the list.
-*/
-listint_t *find_second_head(listint_t *head)
+ * get_nodeint_at_index - Function that returns
+ * the nth node of a listint_t linked list.
+ * @head: The header of the link list
+ * @index: The index to check
+ *
+ * Return: The node or NULL if not found
+ */
+listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 {
-	listint_t *slow = head, *fast = head;
+	listint_t *tempnode;
+	size_t size = 0;
 
-	while (1)
+	tempnode = head;
+	while (size != index && tempnode != NULL)
 	{
-		fast = fast->next->next;
-		if (!fast)
-			return (slow->next);
-		if (!fast->next)
-			return (slow->next->next);
-		slow = slow->next;
+		tempnode = tempnode->next;
+		size++;
 	}
+	return (tempnode);
 }
 
 /**
-* reverse_list - Reverses a linked list.
-* @head: Double pointer to the head of the linked list.
-* Description: This function reverses a linked list and updates the head.
-*/
-void reverse_list(listint_t **head)
+ * reverse_listint - Function that makes a copy of a reversed
+ * linked list
+ * @head: The linked head
+ *
+ * Return: Pointer to the first node of the reversed list
+ */
+listint_t *reverse_listint(const listint_t *head)
 {
-	listint_t *prev = NULL, *current = *head, *next;
+	listint_t *prev = NULL, *current = (listint_t *)head;
+	listint_t *new_node;
 
 	while (current != NULL)
 	{
-		next = current->next;
-		current->next = prev;
-		prev = current;
-		current = next;
-	}
+		new_node = malloc(sizeof(listint_t));
+		if (new_node == NULL)
+			exit(-1);
 
-	*head = prev;
+		new_node->n = current->n;
+		new_node->next = prev;
+		prev = new_node;
+
+		current = current->next;
+	}
+	free(current);
+	return (prev);
 }
 
 /**
-* is_palindrome - Checks if a singly linked list is a palindrome.
-* @head: Double pointer to the head of the linked list.
-* Return: 1 if it's true, 0 if it's false.
-* Description: This function checks if a linked list is a palindrome.
-*/
+ * listint_len - Function that returns the number
+ * of elements in a linked listint_t list.
+ * @h: The header
+ *
+ * Return: Number of elements in the list
+ */
+int listint_len(const listint_t *h)
+{
+	int size = 0;
+
+	while (h != NULL)
+	{
+		h = h->next;
+		size++;
+	}
+	return (size);
+}
+
+/**
+ * is_palindrome - Function in C that checks if
+ * a singly linked list is a palindrome.
+ * @head: The head of the linked list
+ *
+ * Return: 1 if it's true, 0 if it's false
+ * Empty list is palindrome
+ */
 int is_palindrome(listint_t **head)
 {
-	if (*head == NULL || (*head)->next == NULL)
+	int start_indx, end_indx, linkend_length;
+	listint_t *reverse_link;
+	listint_t *current_s, *current_e;
+
+	/* Case the node is empty */
+	if (*head == NULL)
 		return (1);
 
-	listint_t *second_head = find_second_head(*head);
+	linkend_length = listint_len(*head);
+	reverse_link = reverse_listint(*head);
+	start_indx = 0;
+	end_indx = linkend_length - 1;
 
-	reverse_list(&second_head);
-
-	while (second_head && *head)
+	/* 1 element case */
+	if (linkend_length == 1)
 	{
-		if ((*head)->n == second_head->n)
-		{
-			second_head = second_head->next;
-			*head = (*head)->next;
-		}
-		else
-			return (0);
+		free_listint(reverse_link);
+		return (1);
 	}
 
-	if (!second_head)
-		return (1);
+	/* Other cases */
+	current_s = *head;
+	current_e = reverse_link;
 
-	return (0);
+	while (start_indx < end_indx)
+	{
+		if (current_s->n != current_e->n)
+		{
+			free_listint(reverse_link);
+			return (0);
+		}
+		start_indx++, end_indx--;
+		current_s = current_s->next;
+		current_e = current_e->next;
+	}
+
+	free_listint(reverse_link);
+	return (1);
 }
