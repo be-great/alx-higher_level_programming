@@ -94,3 +94,4 @@ Using : arr1 = []
 |11-delete_at.py|function that deletes the item at a specific position in a list.|
 |12-switch.py|switch value of a and b|
 |13-is_palindrome.c, lists.h| function in C that checks if a singly linked list is a palindrome.|
+|100-print_python_list_info.c| function that prints some basic info about Python lists.|
