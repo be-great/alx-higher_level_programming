@@ -52,32 +52,33 @@ int main(void)
     add_nodeint_end(&head, 1);
     print_listint(head);
     is_palindrome(&head);
+    print_listint(head);
 
-    if (is_palindrome(&head) == 1)
-        printf("defult- Linked list is a palindrome\n");
-    else
-        printf("defult- Linked list is not a palindrome\n");
+    // if (is_palindrome(&head) == 1)
+    //     printf("defult- Linked list is a palindrome\n");
+    // else
+    //     printf("defult- Linked list is not a palindrome\n");
 
-    if (is_palindrome(&head0) == 1)
-        printf("0- Linked list is a palindrome\n");
-    else
-        printf("0- Linked list is not a palindrome\n");
-    if (is_palindrome(&head1) == 1)
-        printf("1- Linked list is a palindrome\n");
-    else
-        printf("1- Linked list is not a palindrome\n");
-    if (is_palindrome(&head2) == 1)
-        printf("2- Linked list is a palindrome\n");
-    else
-        printf("2- Linked list is not a palindrome\n");
-    if (is_palindrome(&head3) == 1)
-        printf("3- Linked list is a palindrome\n");
-    else
-        printf("3- Linked list is not a palindrome\n");
-    if (is_palindrome(&head4) == 1)
-        printf("4- Linked list is a palindrome\n");
-    else
-        printf("4- Linked list is not a palindrome\n");
+    // if (is_palindrome(&head0) == 1)
+    //     printf("0- Linked list is a palindrome\n");
+    // else
+    //     printf("0- Linked list is not a palindrome\n");
+    // if (is_palindrome(&head1) == 1)
+    //     printf("1- Linked list is a palindrome\n");
+    // else
+    //     printf("1- Linked list is not a palindrome\n");
+    // if (is_palindrome(&head2) == 1)
+    //     printf("2- Linked list is a palindrome\n");
+    // else
+    //     printf("2- Linked list is not a palindrome\n");
+    // if (is_palindrome(&head3) == 1)
+    //     printf("3- Linked list is a palindrome\n");
+    // else
+    //     printf("3- Linked list is not a palindrome\n");
+    // if (is_palindrome(&head4) == 1)
+    //     printf("4- Linked list is a palindrome\n");
+    // else
+    //     printf("4- Linked list is not a palindrome\n");
 
     free_listint(head);
     free_listint(head0);

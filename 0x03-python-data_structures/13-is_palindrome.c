@@ -66,10 +66,10 @@ int is_palindrome(listint_t **head)
 
 	if (!compare_lists(*head, second_head))
 	{
-		reverse_listint(&second_head); /* Re-reverse the second half */
+		reverse_listint(&second_head);
 		return (0);
 	}
 
-	reverse_listint(&second_head); /* Re-reverse the second half */
+	reverse_listint(&second_head);
 	return (1);
 }
