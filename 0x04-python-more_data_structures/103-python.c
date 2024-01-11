@@ -42,7 +42,6 @@ void print_python_bytes(PyObject *p)
 * print_python_list - functions that print some basic info about
 * python list object
 * @p: Python list object
-* Return: No return
 */
 void print_python_list(PyObject *p)
 {
@@ -51,7 +50,7 @@ void print_python_list(PyObject *p)
 	PyListObject *list;
 	PyObject *list_item;
 
-	size = PyList_Size(p);
+	size = ((PyVarObject *)(p))->ob_size;
 	list = (PyListObject *)p;
 
 	printf("[*] Python list info\n");
@@ -60,8 +59,8 @@ void print_python_list(PyObject *p)
 
 	for (i = 0; i < size; i++)
 	{
-		list_item = PyList_GetItem(p, i);
-		printf("Element %ld: %s\n", i, Py_TYPE(list_item)->tp_name);
+		list_item = ((PyListObject *)p)->ob_item[i];
+		printf("Element %ld: %s\n", i,  ((list_item)->ob_type)->tp_name);
 
 		if (PyBytes_Check(list_item))
 			print_python_bytes(list_item);
