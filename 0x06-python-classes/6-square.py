@@ -59,7 +59,7 @@ class Square:
         if self.__size <= 0:
             print()
         else:
-            for i in range(pos[1]):
+            for i in range(0, pos[1]):
                 print()
 
             for j in range(size):
