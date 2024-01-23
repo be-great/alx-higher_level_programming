@@ -7,6 +7,7 @@ class Square:
     size : Private instance attribute
     with exception handling
     """
+
     def __init__(self, size=0, position=(0, 0)):
         """a private instance attribute"""
 
@@ -14,7 +15,10 @@ class Square:
         self.__position = position
 
     def area(self):
-        """Public instance method that returns the current square area"""
+        """Public instance method that returns the current square area"
+         Arguments:
+            size (int): The size of the new square.
+            position (int, int): The position of the new square."""
 
         return self.__size ** 2
 
@@ -43,6 +47,7 @@ class Square:
     @position.setter
     def position(self, value):
         """set the position instance attribute"""
+
         is_int = all(isinstance(x, int) and x >= 0 for x in value)
         is_tuple = isinstance(value, tuple)
         if len(value) != 2 or not is_int or not is_tuple:
