@@ -19,13 +19,17 @@ class Square:
         """Public instance method that returns the current square area"""
 
         return self.__size ** 2
-    
+
     @property
     def size(self):
+        """get the size instance attribute"""
+
         return self.__size
-    
+
     @size.setter
     def size(self, value):
+        """set the size instance attribute"""
+
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
         if value < 0:
