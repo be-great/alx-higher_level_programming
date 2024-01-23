@@ -35,4 +35,4 @@
 |100-singly_linked_list.py||
 |101-square.py|Printing a Square instance should have the same behavior as my_print() : __str__|
 |102-square.py|Square instance can answer to comparators: ==, !=, >, >=, < and <= based on the square area: __eq__, __nq__, ...|
-|103-magic_class.py||
+|103-magic_class.py|Python class MagicClass that does exactly the same as the following Python bytecode|
