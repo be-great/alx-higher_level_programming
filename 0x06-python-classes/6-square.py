@@ -9,10 +9,7 @@ class Square:
     """
     def __init__(self, size=0, position=(0, 0)):
         """a private instance attribute"""
-        if not isinstance(size, int):
-            raise TypeError("size must be an integer")
-        if size < 0:
-            raise ValueError("size must be >= 0")
+
         self.__size = size
         self.__position = position
 
@@ -46,10 +43,9 @@ class Square:
     @position.setter
     def position(self, value):
         """set the position instance attribute"""
-        is_int = all(isinstance(x, int) for x in value)
-        is_pos = all(x >= 0 for x in value)
+        is_int = all(isinstance(x, int) and x >= 0 for x in value)
         is_tuple = isinstance(value, tuple)
-        if len(value) != 2 or not is_int or not is_tuple or not is_pos:
+        if len(value) != 2 or not is_int or not is_tuple:
             raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
 
@@ -64,6 +60,6 @@ class Square:
             for i in range(0, pos[1]):
                 print()
 
-            for j in range(size):
+            for j in range(0, size):
                 print(" " * pos[0], end="")
                 print("#" * size)
