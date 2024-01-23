@@ -31,7 +31,7 @@
 |3-square.py|add Public instance method: def area(self): that returns the current square area|
 |4-square.py|property def size(self): to retrieve it , property setter def size(self, value): to set it|
 |5-square.py|Public instance method: def my_print(self): that prints in stdout the square with the character #|
-|6-square.py||
+|6-square.py| add Private instance attribute: position with it's getter and setter the of (,) the tuple[0] number of space to print at the beginning of each line , tuple[1] number of line to print before printing the square|
 |100-singly_linked_list.py||
 |101-square.py||
 |102-square.py||
