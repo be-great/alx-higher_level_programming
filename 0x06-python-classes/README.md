@@ -28,7 +28,7 @@
 |0-square.py|a class that do nothing|
 |1-square.py|class Square that defines a square by: (based on 0-square.py) , Private instance attribute: size,Instantiation with size (no type/value verification)|
 |2-square.py| Private instance attribute: size, Instantiation with optional size: def __init__(self, size=0). size must be an integer, otherwise raise a TypeError exception with the message size must be an integer , if size is less than 0, raise a ValueError exception with the message size must be >= 0|
-|3-square.py||
+|3-square.py|add Public instance method: def area(self): that returns the current square area|
 |4-square.py||
 |5-square.py||
 |6-square.py||
