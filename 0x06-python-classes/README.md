@@ -33,6 +33,6 @@
 |5-square.py|Public instance method: def my_print(self): that prints in stdout the square with the character #|
 |6-square.py| add Private instance attribute: position with it's getter and setter the of (,) the tuple[0] number of space to print at the beginning of each line , tuple[1] number of line to print before printing the square|
 |100-singly_linked_list.py||
-|101-square.py||
-|102-square.py||
+|101-square.py|Printing a Square instance should have the same behavior as my_print() : __str__|
+|102-square.py|Square instance can answer to comparators: ==, !=, >, >=, < and <= based on the square area: __eq__, __nq__, ...|
 |103-magic_class.py||
