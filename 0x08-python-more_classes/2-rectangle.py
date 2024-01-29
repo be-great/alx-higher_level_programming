@@ -4,8 +4,7 @@
 
 class Rectangle:
     """a class have:
-    size : Private instance attribute
-    with exception handling
+    args: (int) width, (int) height
     """
     def __init__(self, width=0, height=0):
         if not isinstance(width, int):
@@ -56,5 +55,6 @@ class Rectangle:
 
     def perimeter(self):
         """function to calculate the perimeter of retangle"""
-
+        if self.__height == 0 or self.__width == 0:
+            return 0
         return (self.__width + self.__height) * 2
