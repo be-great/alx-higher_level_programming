@@ -66,6 +66,5 @@ class Rectangle:
             return ""
         result = ""
         for h in range(self.__height):
-            result += "#" * self.__width
-            result += "\n"
-        return result
+            result += "#" * self.__width + "\n"
+        return result.rstrip()
