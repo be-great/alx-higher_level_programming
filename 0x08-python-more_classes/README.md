@@ -73,3 +73,17 @@ __dict__ of a Class and an Instance:
     D- attribute error
 
 
+
+|File | description|
+|---|---|
+|0-rectangle.py|a class that do nothing|
+|1-rectangle.py||
+|2-rectangle.py||
+|3-rectangle.py||
+|4-rectangle.py||
+|5-rectangle.py||
+|6-rectangle.py||
+|7-rectangle.py||
+|8-rectangle.py||
+|9-rectangle.py||
+|101-nqueens.py||
