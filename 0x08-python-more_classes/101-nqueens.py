@@ -18,13 +18,6 @@ def initialize_chessboard(size):
     return chessboard
 
 
-def deep_copy_chessboard(board):
-    """Return a copy of a chessboard."""
-    if isinstance(board, list):
-        return list(map(deep_copy_chessboard, board))
-    return (board)
-
-
 def get_solution(board):
     """Return the list of lists representation of a solved chessboard."""
     result = []
@@ -34,6 +27,13 @@ def get_solution(board):
                 result.append([x, y])
                 break
     return (result)
+
+
+def deep_copy_chessboard(board):
+    """copy the chessboard"""
+    if isinstance(board, list):
+        return list(map(deep_copy_chessboard, board))
+    return board
 
 
 def x_position_ouput(board, row, col):
