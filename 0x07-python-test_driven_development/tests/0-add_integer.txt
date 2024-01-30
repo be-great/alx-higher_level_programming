@@ -1,24 +1,6 @@
-=== Module: mymodule ===
-
-Module Description:
--------------------
-This module contains functions for basic arithmetic operations.
-
----
-
-Function: add_numbers
----------------------
-Description:
-    Adds two numbers and returns the result.
-
-Parameters:
-    a (int): The first number.
-    b (int): The second number.
-
-Returns:
-    int: The sum of the two numbers.
-
-Test postive and negative and zero:-
+=== Module: 0-add_integer ===
+args: (int) a, (int) b
+Return : the sum of the two input number
 ############
 ::
 
