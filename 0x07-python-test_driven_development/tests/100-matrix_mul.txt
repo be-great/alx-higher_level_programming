@@ -31,7 +31,6 @@ Usage
     >>> print(matrix_mul(m_a, m_b))
     [[13, 16]]
 
-The function also works with floating-point numbers.
 
 ::
 
@@ -47,7 +46,6 @@ The function also works with floating-point numbers.
     >>> print(matrix_mul(m_a, m_b))
     [[34.69, 55.44000000000001], [-78.61, 29.018000000000008]]
 
-Integers and floats can be combined.
 
 ::
 
@@ -64,8 +62,6 @@ Integers and floats can be combined.
     >>> print(matrix_mul(m_a, m_b))
     [[73.03999999999999, 84.5, 95.4], [166.58800000000002, 195.8, 223.74]]
 
-A minimum of two arguments must be provided. Otherwise, a TypeError is raised.
-
 ::
 
     >>> print(matrix_mul()) # doctest: +NORMALIZE_WHITESPACE
@@ -81,11 +77,7 @@ A minimum of two arguments must be provided. Otherwise, a TypeError is raised.
     'm_a' and 'm_b'
 
 ValueErrors
-===========
-
-If two matrices cannot be multiplied (ie. the row count of ``m_a`` is not
-equal to the column count in ``m_b``), a ValueError is raised.
-
+################
 ::
 
     >>> m_a = [
@@ -100,10 +92,6 @@ equal to the column count in ``m_b``), a ValueError is raised.
     >>> print(matrix_mul(m_a, m_b))
     Traceback (most recent call last):
     ValueError: m_a and m_b can't be multiplied
-
-
-The parameters ``m_a`` and ``m_b`` cannot be empty. Otherwise, a ValueError
-is raised.
 
 ::
 
@@ -173,9 +161,6 @@ Not just any list - they *must* be lists of lists!
     Traceback (most recent call last):
     TypeError: m_a must be a list of lists
 
-And not just any list of lists - they *must* be lists of lists containing
-integers or floats!
-
 ::
 
     >>> print(matrix_mul([[1, "non-number"]], [[3, 4]]))
@@ -193,9 +178,6 @@ integers or floats!
     >>> print(matrix_mul([[1, "non-number"]], [[{"a": 1}, 8.8]]))
     Traceback (most recent call last):
     TypeError: m_a should contain only integers or floats
-
-Finally, the length of all rows in matrices ``m_a`` and ``m_b`` should be
-equivalent. Otherwise, a TypeError is raised.
 
 ::
 
@@ -227,14 +209,15 @@ equivalent. Otherwise, a TypeError is raised.
 
 ::
 
+    >>> m_b = [
+    ... [1, 2],
+    ... [3, 4, 5]
+    ... ]
     >>> m_a = [
     ... [1, 2],
     ... [3, 4, 5]
     ... ]
-    >>> m_b = m_a
     >>> print(matrix_mul(m_a, m_b))
     Traceback (most recent call last):
     TypeError: each row of m_a must should be of the same size
 
-
-::

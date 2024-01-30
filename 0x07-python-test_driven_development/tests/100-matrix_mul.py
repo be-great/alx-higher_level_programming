@@ -1,11 +1,3 @@
-#!/usr/bin/python3
-"""
-    - TypeError: If m_a or m_b is not a list, not a list of lists
-    - ValueError: If m_a or m_b is empty
-    Returns:- list of lists: The resulting matrix after multiplication.
-"""
-
-
 def matrix_mul(m_a, m_b):
     """
     Args:- m_a (list of lists), m_b (list of lists)
@@ -36,9 +28,9 @@ def matrix_mul(m_a, m_b):
            for row in m_b for element in row):
         raise TypeError("m_b should contain only integers or floats")
     length_row = len(m_b[0])
-    for x in range(len(m_a)):
-        if len(m_a[x]) != length_row:
-            raise TypeError("each row of m_a must be of the same size")        
+    for x in range(len(m_b)):
+        if len(m_b[x]) != length_row:
+            raise TypeError("each row of m_b must be of the same size")        
 
     # Check if matrices can be multiplied
     if len(m_a[0]) != len(m_b):
