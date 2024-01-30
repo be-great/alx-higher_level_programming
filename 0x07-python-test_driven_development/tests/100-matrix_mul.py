@@ -15,8 +15,7 @@ def matrix_mul(m_a, m_b):
     length_row = len(m_a[0])
     for x in range(len(m_a)):
         if len(m_a[x]) != length_row:
-            raise TypeError("each row of m_a must be of the same size")        
-
+            raise TypeError("each row of m_a must be of the same size")
     # Validate m_b
     if not isinstance(m_b, list):
         raise TypeError("m_b must be a list")
@@ -30,12 +29,10 @@ def matrix_mul(m_a, m_b):
     length_row = len(m_b[0])
     for x in range(len(m_b)):
         if len(m_b[x]) != length_row:
-            raise TypeError("each row of m_b must be of the same size")        
-
+            raise TypeError("each row of m_b must be of the same size")
     # Check if matrices can be multiplied
     if len(m_a[0]) != len(m_b):
         raise ValueError("m_a and m_b can't be multiplied")
-
     # Perform matrix multiplication
     result_matrix = [
         [sum(a * b for a, b in zip(row_a, col_b))

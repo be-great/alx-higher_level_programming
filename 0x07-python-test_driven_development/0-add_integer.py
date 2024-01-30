@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-#!/usr/bin/python3
 """
 add_integer - Function that adds 2 integers.
 a and b must be integers or floats, otherwise raise a TypeError

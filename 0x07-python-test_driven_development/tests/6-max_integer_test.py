@@ -8,8 +8,6 @@ max_integer = __import__('6-max_integer').max_integer
 class TestMaxInteger(unittest.TestCase):
     """Class: define unittests for max_integer([..])."""
 
-
-
     def test_str(self):
         """Test string."""
         self.assertEqual(max_integer("ABCDEF"), 'F')
@@ -59,6 +57,7 @@ class TestMaxInteger(unittest.TestCase):
         """Test list of integer and float."""
         _list = [0.99, 2.99, -10.9, -15.2222, 6.0]
         self.assertEqual(max_integer(_list), 6.0)
+
 
 if __name__ == '__main__':
     unittest.main()
