@@ -1,3 +1,9 @@
+#!/usr/bin/python3
+"""
+function that multiplies 2 matrices
+"""
+
+
 def matrix_mul(m_a, m_b):
     """
     Args:- m_a (list of lists), m_b (list of lists)

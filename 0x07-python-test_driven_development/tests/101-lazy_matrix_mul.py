@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import numpy as np
 """
 Module : function that multiplies 2 matrices by using the module NumPy
