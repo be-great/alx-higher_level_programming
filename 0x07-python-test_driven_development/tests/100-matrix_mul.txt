@@ -191,7 +191,7 @@ Not just any list - they *must* be lists of lists!
     ... ]
     >>> print(matrix_mul(m_a, m_b))
     Traceback (most recent call last):
-    TypeError: each row of m_a must should be of the same size
+    TypeError: each row of m_a must be of the same size
 
 ::
 
@@ -205,7 +205,8 @@ Not just any list - they *must* be lists of lists!
     ... ]
     >>> print(matrix_mul(m_a, m_b))
     Traceback (most recent call last):
-    TypeError: each row of m_b must should be of the same size
+    TypeError: each row of m_b must be of the same size
+
 
 ::
 
@@ -219,5 +220,6 @@ Not just any list - they *must* be lists of lists!
     ... ]
     >>> print(matrix_mul(m_a, m_b))
     Traceback (most recent call last):
-    TypeError: each row of m_a must should be of the same size
+    TypeError: each row of m_a must be of the same size
+
 
