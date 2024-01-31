@@ -13,4 +13,6 @@ def lazy_matrix_mul(m_a, m_b):
     Args:
         (list of lists) m_a, (list of lists) m_b
     """
+
+
     return (np.matmul(m_a, m_b))
