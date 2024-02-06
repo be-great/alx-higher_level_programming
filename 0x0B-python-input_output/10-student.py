@@ -15,7 +15,12 @@ class Student:
         self.age = age
 
     def to_json(self, attrs=None):
+        """
+        If attrs is a list of strings, only attribute
+        names contained in this list must be retrieved
+        """
         if attrs is None:
             return self.__dict__
         else:
-            return {key: getattr(self, key) for key in attrs if hasattr(self, key)}
+            return {key: getattr(self, key)
+                    for key in attrs if hasattr(self, key)}
