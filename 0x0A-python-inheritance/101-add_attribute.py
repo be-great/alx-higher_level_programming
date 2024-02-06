@@ -10,6 +10,8 @@ def add_attribute(class_name, attribute, value):
           (var)       attribute
           (any_type)  value
     """
+    # check if the class or object have __dict__
+    # if it have it that mean we can add attribute
     if not hasattr(class_name, "__dict__"):
         raise TypeError("can't add new attribute")
     setattr(class_name, attribute, value)
