@@ -3,7 +3,6 @@
 script that reads
 stdin parts by parts and computes metrics:
 """
-import sys
 
 
 def print_cumulative_stats(size, status):
@@ -16,7 +15,7 @@ def print_cumulative_stats(size, status):
 
 
 if __name__ == "__main__":
-
+    import sys
     size = 0
     length = 0
     status = {}
