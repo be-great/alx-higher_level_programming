@@ -4,7 +4,9 @@
 import unittest
 from models.base import Base
 import models.base as filename
-class TestMaxInteger(unittest.TestCase):
+
+
+class TestBase(unittest.TestCase):
     """Class: define unittests for class Base"""
 
     def test_file_doc(self):
@@ -31,7 +33,7 @@ class TestMaxInteger(unittest.TestCase):
         self.assertEqual(b1.id, 12)
 
     def test_third_id(self):
-        """Test id with argument"""
+        """Test id"""
         b1 = Base()
         self.assertEqual(b1.id, 3)
 

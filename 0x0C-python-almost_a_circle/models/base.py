@@ -11,6 +11,7 @@ class Base:
     to manage the id attribute
     """
     __nb_objects = 0
+
     def __init__(self, id=None):
         """args: (int) id"""
         if id is not None:
@@ -18,4 +19,3 @@ class Base:
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
-
