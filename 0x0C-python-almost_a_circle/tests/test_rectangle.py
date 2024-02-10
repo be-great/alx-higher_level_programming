@@ -11,6 +11,7 @@ from models.base import Base
 
 class TestRectangle(unittest.TestCase):
     """Class: define unittests for class Rectangle"""
+
     def setUp(self):
         """setUp"""
         Base._Base__nb_objects = 0
@@ -22,42 +23,57 @@ class TestRectangle(unittest.TestCase):
     def test_class_doc(self):
         """Test doc"""
         self.assertIsNotNone(filename.__doc__)
+
     def test_construct_doc(self):
         """Test doc"""
         self.assertIsNotNone(Rectangle.__init__.__doc__)
+
     def test_area_doc(self):
         """Test doc"""
         self.assertIsNotNone(Rectangle.area.__doc__)
+
     def test_display_doc(self):
         """Test doc"""
         self.assertIsNotNone(Rectangle.display.__doc__)
+
     def test_str_doc(self):
         """Test doc"""
         self.assertIsNotNone(Rectangle.__str__.__doc__)
+
     def test_update_doc(self):
         """Test doc"""
         self.assertIsNotNone(Rectangle.update.__doc__)
+
     def test_width_doc(self):
         """Test doc"""
         self.assertIsNotNone(Rectangle.width.__doc__)
+
     def test_height_doc(self):
         """Test doc"""
         self.assertIsNotNone(Rectangle.height.__doc__)
+
     def test_x_doc(self):
         """Test doc"""
         self.assertIsNotNone(Rectangle.x.__doc__)
+
     def test_y_doc(self):
         """Test doc"""
         self.assertIsNotNone(Rectangle.y.__doc__)
+
+    def test_to_dictionary_doc(self):
+        """Test doc"""
+        self.assertIsNotNone(Rectangle.to_dictionary.__doc__)
 
     def test_first_id(self):
         """Test id"""
         r1 = Rectangle(10, 2)
         self.assertEqual(r1.id, 1)
+
     def test_second_id(self):
         """Test id"""
         r2 = Rectangle(2, 10)
         self.assertEqual(r2.id, 1)
+
     def test_giving_id(self):
         """Test id with argument"""
         r3 = Rectangle(10, 2, 0, 0, 12)
@@ -72,6 +88,7 @@ class TestRectangle(unittest.TestCase):
         """Test type"""
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
             Rectangle(10 ,"2")
+
     def test_invalid_width(self):
         """Test type"""
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
@@ -82,6 +99,7 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
             r = Rectangle(10 ,2)
             r.width = -10
+
     def test_invalid_neg_height(self):
         """Test type"""
         with self.assertRaisesRegex(ValueError, "height must be > 0"):
@@ -243,6 +261,12 @@ class TestRectangle(unittest.TestCase):
         r5.update(x=1, height=2, y=3, width=4)
         self.assertEqual(str(r5), "[Rectangle] (89) 1/3 - 4/2")
 
+    def test_to_dictionary(self):
+        """ returns the dictionary representation of a Rectangle"""
+        r1 = Rectangle(10, 2, 1, 9)
+        self.assertEqual(r1.to_dictionary(),
+                         {'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10})
+        self.assertIsInstance(r1.to_dictionary(), dict)
 
 if __name__ == '__main__':
     unittest.main()

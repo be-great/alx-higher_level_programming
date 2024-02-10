@@ -16,17 +16,21 @@ class TestBase(unittest.TestCase):
     def test_class_doc(self):
         """Test doc"""
         self.assertIsNotNone(filename.__doc__)
+
     def test_construct_doc(self):
         """Test doc"""
         self.assertIsNotNone(Base.__init__.__doc__)
+
     def test_first_id(self):
         """Test id"""
         b1 = Base()
         self.assertEqual(b1.id, 1)
+
     def test_second_id(self):
         """Test id"""
         b1 = Base()
         self.assertEqual(b1.id, 2)
+
     def test_giving_id(self):
         """Test id with argument"""
         b1 = Base(12)
@@ -36,9 +40,6 @@ class TestBase(unittest.TestCase):
         """Test id"""
         b1 = Base()
         self.assertEqual(b1.id, 3)
-
-
-
 
 
 if __name__ == '__main__':
