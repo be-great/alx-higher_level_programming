@@ -50,7 +50,8 @@ class Base:
             else:
                 # get the dictorny of each on the list_objs
                 save = [x.to_dictionary() for x in list_objs]
-                f.write(json.dump(save))
+                save = Base.to_json_string(save)
+                f.write(save)
 
     @staticmethod
     def from_json_string(json_string):
