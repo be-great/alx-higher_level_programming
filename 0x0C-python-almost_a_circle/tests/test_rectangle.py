@@ -87,25 +87,25 @@ class TestRectangle(unittest.TestCase):
     def test_invalid_height(self):
         """Test type"""
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
-            Rectangle(10 ,"2")
+            Rectangle(10, "2")
 
     def test_invalid_width(self):
         """Test type"""
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            Rectangle("10" ,2)
-    
+            Rectangle("10", 2)
+
     def test_invalid_neg_width(self):
         """Test type"""
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
-            r = Rectangle(10 ,2)
+            r = Rectangle(10, 2)
             r.width = -10
 
     def test_invalid_neg_height(self):
         """Test type"""
         with self.assertRaisesRegex(ValueError, "height must be > 0"):
-            r = Rectangle(10 ,2)
+            r = Rectangle(10, 2)
             r.height = -10
-    
+
     def test_invalid_x(self):
         """Test type"""
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
@@ -146,13 +146,13 @@ class TestRectangle(unittest.TestCase):
         with (x, y) = (0, 0)
         """
         r5 = Rectangle(4, 6)
-        
+
         # capture the printed ouput with stringio and mock
         with patch('sys.stdout', new_callable=StringIO) as mc:
             r5.display()
             output = mc.getvalue().strip()
-        
-        expected_out ="####\n####\n####\n####\n####\n####"
+
+        expected_out = "####\n####\n####\n####\n####\n####"
         self.assertEqual(output, expected_out)
 
     def test_display_1(self):
@@ -161,13 +161,13 @@ class TestRectangle(unittest.TestCase):
         with (x, y) = (0, 0)
         """
         r5 = Rectangle(2, 2)
-        
+
         # capture the printed ouput with stringio and mock
         with patch('sys.stdout', new_callable=StringIO) as mc:
             r5.display()
             output = mc.getvalue().strip()
-        
-        expected_out ="##\n##"
+
+        expected_out = "##\n##"
         self.assertEqual(output, expected_out)
 
     def test_str_0(self):
@@ -186,13 +186,13 @@ class TestRectangle(unittest.TestCase):
         with (x, y) = (2, 2)
         """
         r3 = Rectangle(2, 3, 2, 2)
-        
+
         # capture the printed ouput with stringio and mock
         with patch('sys.stdout', new_callable=StringIO) as mc:
             r3.display()
             output = mc.getvalue().strip()
-        
-        expected_out ="##\n  ##\n  ##"
+
+        expected_out = "##\n  ##\n  ##"
         self.assertEqual(output, expected_out)
 
     def test_display_3(self):
@@ -201,15 +201,14 @@ class TestRectangle(unittest.TestCase):
         with (x, y) = (1, 0)
         """
         r4 = Rectangle(3, 2, 1, 0)
-        
+
         # capture the printed ouput with stringio and mock
         with patch('sys.stdout', new_callable=StringIO) as mc:
             r4.display()
             output = mc.getvalue().strip()
-        
-        expected_out ="###\n ###"
-        self.assertEqual(output, expected_out)
 
+        expected_out = "###\n ###"
+        self.assertEqual(output, expected_out)
 
     def test_update_0(self):
         """Test update_0"""
@@ -267,6 +266,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r1.to_dictionary(),
                          {'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10})
         self.assertIsInstance(r1.to_dictionary(), dict)
+
 
 if __name__ == '__main__':
     unittest.main()
