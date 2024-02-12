@@ -4,6 +4,7 @@ class will be the “base” of
 all other classes in this project
 """
 import json
+import csv
 
 
 class Base:
@@ -80,3 +81,46 @@ class Base:
         except IOError:
             result = []
         return result
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """def save_to_file_csv(cls, list_objs)"""
+        filename = cls.__name__ + ".csv"
+        with open(filename, mode='w', newline='') as file:
+            writer = csv.writer(file)
+            if list_objs is None or list_objs == []:
+                file.write("[]")
+            else:
+                if cls.__name__ == "Rectangle":
+                    header = ["id", "width", "height", "x", "y"]
+                else:
+                    header = ["id", "size", "x", "y"]
+                writer = csv.DictWriter(file, fieldnames=header)
+                for ob_data in list_objs:
+                    writer.writerow(ob_data.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Deserializes objects from a CSV file and create it"""
+        filename = cls.__name__ + ".csv"
+        try:
+            with open(filename, mode='r') as file:
+                if cls.__name__ == "Rectangle":
+                    header = ["id", "width", "height", "x", "y"]
+                else:
+                    header = ["id", "size", "x", "y"]
+
+                writer = csv.DictReader(file, fieldnames=header)
+                obj_list = []
+                for dict_ in writer:
+                    # create what we found on the csv file
+                    d = {}
+                    for key, value in dict_.items():
+                        d[key] = int(value)
+                    obj_list.append(d)
+                res = []
+                for obj_data in obj_list:
+                    res.append(cls.create(**obj_data))
+                return res
+        except IOError:
+            return []
