@@ -310,6 +310,32 @@ class TestBase_instantiation(unittest.TestCase):
         with self.assertRaises(TypeError):
             Base.to_json_string([], 1)
 
+    def test_save_to_file_one_rectangle(self):
+        r = Rectangle(10, 7, 2, 8, 5)
+        Rectangle.save_to_file([r])
+        with open("Rectangle.json", "r") as f:
+            self.assertTrue(len(f.read()) == 53)
+
+    def test_save_to_file_two_rectangles(self):
+        r1 = Rectangle(10, 7, 2, 8, 5)
+        r2 = Rectangle(2, 4, 1, 2, 3)
+        Rectangle.save_to_file([r1, r2])
+        with open("Rectangle.json", "r") as f:
+            self.assertTrue(len(f.read()) == 105)
+
+    def test_save_to_file_one_square(self):
+        s = Square(10, 7, 2, 8)
+        Square.save_to_file([s])
+        with open("Square.json", "r") as f:
+            self.assertTrue(len(f.read()) == 39)
+
+    def test_save_to_file_two_squares(self):
+        s1 = Square(10, 7, 2, 8)
+        s2 = Square(8, 1, 2, 3)
+        Square.save_to_file([s1, s2])
+        with open("Square.json", "r") as f:
+            self.assertTrue(len(f.read()) == 77)
+
     def test_save_to_file_cls_name_for_filename(self):
         s = Square(10, 7, 2, 8)
         Base.save_to_file([s])
@@ -341,10 +367,6 @@ class TestBase_instantiation(unittest.TestCase):
     def test_save_to_file_more_than_one_arg(self):
         with self.assertRaises(TypeError):
             Square.save_to_file([], 1)
-
-
-class TestBase_from_json_string(unittest.TestCase):
-    """Unittests for testing from_json_string method of Base class."""
 
     def test_from_json_string_type(self):
         list_input = [{"id": 89, "width": 10, "height": 4}]
@@ -395,10 +417,6 @@ class TestBase_from_json_string(unittest.TestCase):
     def test_from_json_string_more_than_one_arg(self):
         with self.assertRaises(TypeError):
             Base.from_json_string([], 1)
-
-
-class TestBase_create(unittest.TestCase):
-    """Unittests for testing create method of Base class."""
 
     def test_create_rectangle_original(self):
         r1 = Rectangle(3, 5, 1, 2, 7)
