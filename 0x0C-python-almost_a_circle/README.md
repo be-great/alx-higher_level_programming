@@ -18,4 +18,4 @@
     $ python3.8 -m unittest discover tests
 #### Test file
 
-    $ python3.8 -m unittest tests/test_base.py
+    $ python3.8 -m unittest tests/test_models/test_base.py
