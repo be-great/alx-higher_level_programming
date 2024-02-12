@@ -41,15 +41,15 @@ class Square(Rectangle):
         Args:
             (list) *args
         """
-        j = 0
         attr = ["id", "size", "x", "y"]
-
-        for i in range(len(args)):
+        i = 0
+        while i < len(args) and i < len(attr):
             if i == 1:
                 setattr(self, "width", args[i])
                 setattr(self, "height", args[i])
             else:
                 setattr(self, attr[i], args[i])
+            i += 1
         for key, value in kwargs.items():
             if key == "size":
                 setattr(self, "width", value)

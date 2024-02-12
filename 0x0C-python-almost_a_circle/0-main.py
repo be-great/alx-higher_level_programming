@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ 0-main """
 from models.base import Base
-
+from models.rectangle import Rectangle
 if __name__ == "__main__":
 
     b1 = Base()
@@ -18,3 +18,5 @@ if __name__ == "__main__":
 
     b5 = Base()
     print(b5.id)
+
+    Rectangle(1, 2, True, 2)
