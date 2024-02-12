@@ -24,6 +24,18 @@ class TestBase(unittest.TestCase):
             os.remove("Square.json")
         except IOError:
             pass
+        try:
+            os.remove("Rectangle.csv")
+        except IOError:
+            pass
+        try:
+            os.remove("Square.csv")
+        except IOError:
+            pass
+        try:
+            os.remove("Base.csv")
+        except IOError:
+            pass
 
     def test_file_doc(self):
         """Test doc"""
