@@ -68,3 +68,4 @@ class Square(Rectangle):
                 "y": self.y
         }
         return dictionary
+    
