@@ -343,6 +343,21 @@ class TestBase_instantiation(unittest.TestCase):
         list_output = Rectangle.from_json_string(json_list_input)
         self.assertEqual(list, type(list_output))
 
+    def test_from_json_string_one_rectangle(self):
+        list_input = [{"id": 89, "width": 10, "height": 4, "x": 7}]
+        json_list_input = Rectangle.to_json_string(list_input)
+        list_output = Rectangle.from_json_string(json_list_input)
+        self.assertEqual(list_input, list_output)
+
+    def test_from_json_string_two_rectangles(self):
+        list_input = [
+            {"id": 89, "width": 10, "height": 4, "x": 7, "y": 8},
+            {"id": 98, "width": 5, "height": 2, "x": 1, "y": 3},
+        ]
+        json_list_input = Rectangle.to_json_string(list_input)
+        list_output = Rectangle.from_json_string(json_list_input)
+        self.assertEqual(list_input, list_output)
+
     def test_from_json_string_one_square(self):
         list_input = [{"id": 89, "size": 10, "height": 4}]
         json_list_input = Square.to_json_string(list_input)
