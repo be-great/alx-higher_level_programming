@@ -56,6 +56,8 @@ class Base:
     @staticmethod
     def from_json_string(json_string):
         """args : (str) my_str"""
+        if json_string is None or json_string == []:
+            return []
         return json.loads(json_string)
 
     @classmethod
