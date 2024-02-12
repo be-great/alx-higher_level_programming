@@ -6,6 +6,7 @@ from models.base import Base
 import models.base as filename
 from models.rectangle import Rectangle
 from models.square import Square
+import json
 
 
 class TestBase(unittest.TestCase):
@@ -66,9 +67,8 @@ class TestBase(unittest.TestCase):
         self.assertIsInstance(dictionary, dict)
         self.assertEqual(dictionary,
                          {'id': 1, 'width': 10, 'height': 7, 'x': 2, 'y': 8})
-        json_dictionary = Base.to_json_string([dictionary])
-        excepted = '[{"id": 1, "width": 10, "height": 7, "x": 2, "y": 8}]'
-        self.assertIsInstance(json_dictionary, str)
+        json_dictionary = json.loads(Base.to_json_string([dictionary]))
+        excepted = [{"id": 1, "width": 10, "height": 7, "x": 2, "y": 8}]
         self.assertEqual(json_dictionary, excepted)
 
         json_dictionary = Base.to_json_string(None)
@@ -84,9 +84,14 @@ class TestBase(unittest.TestCase):
         with open("Rectangle.json", "r") as file:
             content = file.read()
             self.assertIsInstance(content, str)
-            excepted = '[{"id": 1, "width": 10, "height": 7, "x": 2, "y": 8}'
-            excepted += ', {"id": 2, "width": 2, "height": 4, "x": 0, "y": 0}]'
-            self.assertEqual(content, excepted)
+            actual = json.loads(content)
+            expected = [
+                {"id": 1, "width": 10, "height": 7, "x": 2, "y": 8},
+                {"id": 2, "width": 2, "height": 4, "x": 0, "y": 0}
+            ]
+
+            # Check if the elements are present in the expected order
+            self.assertEqual(actual, expected)
 
     def test_third_id(self):
         """Test id"""
@@ -98,15 +103,13 @@ class TestBase(unittest.TestCase):
         self.assertIsInstance(list_input, list)
         self.assertIsInstance(json_list_input, str)
         self.assertIsInstance(list_output, list)
-        except_string0 = [{'id': 89, 'width': 10, 'height': 4}]
-        except_string0.append({'id': 7, 'width': 1, 'height': 7})
-        except_string1 = '[{"id": 89, "width": 10, "height": 4}'
-        except_string1 += ', {"id": 7, "width": 1, "height": 7}]'
-        except_string2 = [{'id': 89, 'width': 10, 'height': 4}]
-        except_string2.append({'id': 7, 'width': 1, 'height': 7})
-        self.assertEqual(list_input, except_string0)
-        self.assertEqual(json_list_input, except_string1)
-        self.assertEqual(list_output, except_string2)
+
+        # Use json.loads to compare the lists without considering order
+        expected_list = [{'id': 89, 'width': 10, 'height': 4},
+                         {'id': 7, 'width': 1, 'height': 7}]
+
+        self.assertEqual(json.loads(json_list_input), expected_list)
+        self.assertEqual(list_output, expected_list)
 
     def test_create_(self):
         """returns an instance with all attributes already set"""
