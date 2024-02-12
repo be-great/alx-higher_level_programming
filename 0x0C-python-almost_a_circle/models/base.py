@@ -5,7 +5,6 @@ all other classes in this project
 """
 import json
 import csv
-import turtle
 
 
 class Base:
