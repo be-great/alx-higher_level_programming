@@ -1,0 +1,52 @@
+############################################
+1) check doc of (file, each function)
+3) check area function
+5) check integer_validator without argument
+6) check integer_validator with name only
+7) check integer_validator with value only
+8) check empty string both name and value
+9) check wrong type of value
+10)check right type of value
+11)check value < 0
+12)check right value
+
+############################################
+
+Check the docs:-
+=================
+
+::
+	>>> _list = __import__("7-base_geometry").__doc__
+	>>> len(_list) > 1
+	True
+
+::
+	>>> _list = __import__("7-base_geometry").BaseGeometry.__doc__
+	>>> len(_list) > 1
+	True
+
+::
+
+	>>> _list = __import__("7-base_geometry").BaseGeometry.area.__doc__
+	>>> len(_list) > 1
+	True
+
+::
+
+	>>> _list = __import__("7-base_geometry").BaseGeometry.integer_validator.__doc__
+	>>> len(_list) > 1
+	True
+
+
+
+Check area function:
+===================
+::
+
+    >>> BaseGeometry = __import__("7-base_geometry").BaseGeometry
+    >>> obj = BaseGeometry()
+    >>> obj.area()
+    Traceback (most recent call last):
+      ...
+    Exception: area() is not implemented
+
