@@ -1,4 +1,4 @@
 -- list records
 SELECT score, name FROM second_tables
-WHERE naem != ""
+WHERE name != ""
 ORDER BY score DESC;
