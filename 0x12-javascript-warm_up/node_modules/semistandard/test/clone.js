@@ -1,0 +1,75 @@
+#!/usr/bin/env node
+
+/**
+ * Clones several projects that are known to follow "JavaScript Standard Style" and runs
+ * the `standard` style checker to verify that it passes without warnings. This helps
+ * ensure we don't accidentally introduce new style rules that cause previously "good"
+ * code to start failing with new warnings! (And if we do, then that needs to be a MAJOR
+ * VERSION BUMP.)
+ */
+
+import cp from 'node:child_process'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import mkdirp from 'mkdirp'
+import rimraf from 'rimraf'
+import series from 'run-series'
+import test from 'tape'
+
+const TMP = fileURLToPath(new URL('../tmp', import.meta.url))
+const SEMISTANDARD = fileURLToPath(new URL('../bin/cmd.js', import.meta.url))
+
+// const URLS = require('./semistandard-repos.json')
+const URLS = [
+  'https://github.com/bcomnes/fetch-errors'
+]
+
+const MODULES = {}
+URLS.forEach(function (url) {
+  const spliturl = url.split('/')
+  const name = spliturl[spliturl.length - 1]
+  MODULES[name] = url + '.git'
+})
+
+test('clone repos from github', function (t) {
+  rimraf.sync(TMP)
+  mkdirp.sync(TMP)
+
+  series(Object.keys(MODULES).map(function (name) {
+    const url = MODULES[name]
+    return function (cb) {
+      const args = ['clone', '--depth', 1, url, path.join(TMP, name)]
+      // TODO: Start `git` in a way that works on Windows – PR welcome!
+      spawn('git', args, {}, cb)
+    }
+  }), function (err) {
+    if (err) throw err
+    t.pass('cloned repos')
+    t.end()
+  })
+})
+
+test('lint repos', function (t) {
+  series(Object.keys(MODULES).map(function (name) {
+    return function (cb) {
+      const cwd = path.join(TMP, name)
+      spawn('node', [SEMISTANDARD], { cwd }, function (err) {
+        t.error(err, name)
+        cb(null)
+      })
+    }
+  }), function (err) {
+    if (err) throw err
+    t.end()
+  })
+})
+
+function spawn (command, args, opts, cb) {
+  const child = cp.spawn(command, args, { stdio: 'inherit', ...opts })
+  child.on('error', cb)
+  child.on('close', function (code) {
+    if (code !== 0) cb(new Error('non-zero exit code: ' + code))
+    else cb(null)
+  })
+  return child
+}
