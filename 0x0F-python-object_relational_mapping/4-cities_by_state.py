@@ -13,8 +13,8 @@ if __name__ == "__main__":
     cur = conn.cursor()
     sql = ("SELECT cities.id as city_id," 
             "states.name as state_name,"
-            "cities.name as city_name FROM cities"
-            "inner join states on cities.state_id = states.id"
+            " cities.name as city_name FROM cities"
+            " inner join states on cities.state_id = states.id"
             " ORDER BY cities.id ASC")
     cur.execute(sql)
     query_rows = cur.fetchall()
