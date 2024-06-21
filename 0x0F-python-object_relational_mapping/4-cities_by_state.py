@@ -12,8 +12,8 @@ if __name__ == "__main__":
                             passwd = sys.argv[2], db = sys.argv[3], charset="utf8")
     cur = conn.cursor()
     sql = ("SELECT cities.id as city_id," 
-            "states.name as state_name,"
-            " cities.name as city_name FROM cities"
+            "cities.name as city_name,"
+            " states.name as state_name FROM cities "
             " inner join states on cities.state_id = states.id"
             " ORDER BY cities.id ASC")
     cur.execute(sql)
