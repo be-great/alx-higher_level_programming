@@ -12,7 +12,7 @@ if __name__ == "__main__":
                             passwd = sys.argv[2], db = sys.argv[3], charset="utf8")
     cur = conn.cursor()
     sql = "SELECT * FROM cities ORDER BY id ASC"
-    cur.execute(sql, (sys.argv[4],))
+    cur.execute(sql)
     query_rows = cur.fetchall()
     for row in query_rows:
         print(row)
