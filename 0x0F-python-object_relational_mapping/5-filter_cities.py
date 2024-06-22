@@ -16,7 +16,11 @@ if __name__ == "__main__":
             " ORDER BY cities.id ASC")
     cur.execute(sql, (sys.argv[4],))
     query_rows = cur.fetchall()
-    for row in query_rows:
-        print(row[0], end=", ")
+    for i in range(len(query_rows)):
+        print(query_rows[0], end="")
+        if i < len(query_rows) - 1:
+            print(", ", end="")
+        else:
+            print()
     cur.close()
     conn.close()
