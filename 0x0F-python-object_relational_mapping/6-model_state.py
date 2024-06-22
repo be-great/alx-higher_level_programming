@@ -1,21 +1,11 @@
 #!/usr/bin/python3
-"""script that lists all states from the database"""
-import MySQLdb
+"""Start link class to table in database 
+"""
 import sys
+from model_state import Base, State
 
+from sqlalchemy import (create_engine)
 
 if __name__ == "__main__":
-    conn = MySQLdb.connect(host = "localhost", port = 3306, user = sys.argv[1],
-                            passwd = sys.argv[2], db = sys.argv[3], charset="utf8")
-    cur = conn.cursor()
-    sql = ("SELECT cities.id as city_id," 
-            "cities.name as city_name,"
-            " states.name as state_name FROM cities "
-            " inner join states on cities.state_id = states.id"
-            " ORDER BY cities.id ASC")
-    cur.execute(sql)
-    query_rows = cur.fetchall()
-    for row in query_rows:
-        print(row)
-    cur.close()
-    conn.close()
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(sys.argv[1], sys.argv[2], sys.argv[3]), pool_pre_ping=True)
+    Base.metadata.create_all(engine)
