@@ -17,6 +17,6 @@ if __name__ == "__main__":
     cur.execute(sql, (sys.argv[4],))
     query_rows = cur.fetchall()
     for row in query_rows:
-        print(row)
+        print(row[0], end=", ")
     cur.close()
     conn.close()
