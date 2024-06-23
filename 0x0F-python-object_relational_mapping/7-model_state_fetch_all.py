@@ -16,4 +16,4 @@ if __name__ == "__main__":
     session = sessionmaker_()
     states = session.query(State).order_by(State.id).all()
     for i in range(len(states)):
-        print("{} : {}".format(i + 1, states[i]))
+        print("{} : {}".format(i + 1, states[i].name))
