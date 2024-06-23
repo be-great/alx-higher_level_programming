@@ -16,6 +16,7 @@ if __name__ == "__main__":
     instance = State(name="Louisiana")
     session.add(instance)
     # print the id
-    print(instance.id)
+    temp = session.query(State).filter_by(State.name == "Louisiana").first()
+    print(temp.id)
     session.commit()
     session.close()
