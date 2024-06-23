@@ -15,5 +15,7 @@ if __name__ == "__main__":
     session = sessionmaker_()
     instance = State(name="Louisiana")
     session.add(instance)
+    # print the id
+    print(instance.id)
     session.commit()
     session.close()
