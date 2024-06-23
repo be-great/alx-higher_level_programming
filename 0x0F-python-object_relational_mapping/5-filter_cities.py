@@ -10,8 +10,8 @@ if __name__ == "__main__":
     cur = conn.cursor()
     sql = ("SELECT"
            " cities.name as city_name"
-           " FROM cities "
-           " inner join states on cities.state_id = states.id"
+           " FROM cities"
+           " INNER JOIN states on cities.state_id = states.id"
            " where states.name = %s"
            " ORDER BY cities.id ASC")
     cur.execute(sql, (sys.argv[4],))
