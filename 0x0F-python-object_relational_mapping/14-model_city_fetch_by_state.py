@@ -13,10 +13,7 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     sessionmaker_ = sessionmaker(bind=engine)
     session = sessionmaker_()
-    cmd1 = session.query(City)
-    citys = cmd1.order_by(City.id).all()
-    for i in range(len(citys)):
-        state = session.query(State).filter(State.id == citys.state_id)
-        state = state.first()
-        print("{}: {} {}".format(state.name, citys[i].id, citys[i].name))
-    session.commit()
+    cmd1 = session.query(State.name, City.id, City.name)
+    citys = cmd1.filter(City.state_id == State.id).order_by(City.id).all()
+    for city in citys:
+        print("{}: {} {}".format(citys[0], citys[1], citys[2]))
