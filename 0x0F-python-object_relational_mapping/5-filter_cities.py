@@ -11,7 +11,7 @@ if __name__ == "__main__":
     sql = ("SELECT"
            " cities.name as city_name"
            " FROM cities"
-           " INNER JOIN states on cities.state_id = states.id"
+           " INNER JOIN states on states.id=cities.state_id "
            " where states.name = %s"
            " ORDER BY cities.id ASC")
     cur.execute(sql, (sys.argv[4],))
