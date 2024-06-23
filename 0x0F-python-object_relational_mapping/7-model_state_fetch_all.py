@@ -5,7 +5,7 @@ Start link class to table in database
 import sys
 from model_state import Base, State
 from sqlalchemy import (create_engine)
-from sqlalchemy import sessionmaker
+from sqlalchemy.orm import sessionmaker
 from model_state import State, Base
 
 if __name__ == "__main__":
