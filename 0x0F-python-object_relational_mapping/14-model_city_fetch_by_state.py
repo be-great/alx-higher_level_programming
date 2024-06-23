@@ -17,4 +17,4 @@ if __name__ == "__main__":
     cmd1 = session.query(State.name, City.id, City.name)
     citys = cmd1.filter(State.id == City.state_id).order_by(City.id).all()
     for city in citys:
-        print("{}: ({}) {}".format(city[0], city[1], city[2]))
+        print(city[0] + ": (" + str(city[1]) + ") " + city[2])
