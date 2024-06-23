@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.schema import MetaData
+from sqlalchemy import Column, Integer, String, MetaData
 """python file that contains the class """
 """"definition of a State and an instance Base"""
 mymetadata = MetaData()
