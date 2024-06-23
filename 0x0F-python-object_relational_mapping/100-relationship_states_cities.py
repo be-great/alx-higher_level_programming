@@ -4,6 +4,7 @@ Start link class to table in database
 """
 import sys
 from model_state import Base, State
+from model_city import City
 from sqlalchemy import (create_engine)
 from sqlalchemy.orm import sessionmaker
 
@@ -14,7 +15,7 @@ if __name__ == "__main__":
     sessionmaker_ = sessionmaker(bind=engine)
     session = sessionmaker_()
     instance_state = State(name="California")
-    instance_city = State(name="San Francisco")
+    instance_city = City(name="San Francisco")
     instance_state.cities.append(instance_city)
     session.add(instance_state)
     session.add(instance_city)
