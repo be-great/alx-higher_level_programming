@@ -5,6 +5,7 @@ Start link class to table in database
 import sys
 from relationship_city import City
 from relationship_state import State
+from model_state import Base
 from sqlalchemy import (create_engine)
 from sqlalchemy.orm import sessionmaker
 
