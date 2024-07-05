@@ -11,6 +11,5 @@ import sys
 
 if __name__ == "__main__":
     """POST an email #1 """
-    repos = requests.post(sys.argv[1], data= {"email": sys.argv[2]})
+    repos = requests.post(sys.argv[1], data={"email": sys.argv[2]})
     print(repos.text)
-
