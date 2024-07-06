@@ -12,15 +12,12 @@ import sys
 
 
 if __name__ == "__main__":
+    """the main proccess"""
     repo = sys.argv[1]
     owner = sys.argv[2]
     url = f"https://api.github.com/repos/{owner}/{repo}/commits"
-
-    response = requests.get(url, params={'per_page': 10})
-
-    if response.status_code == 200:
-        commits = response.json()
-        for commit in commits:
-            sha = commit.get('sha')
-            author = commit.get('commit').get('author').get('name')
-            print(f"{sha}: {author}")
+    resp = requests.get(url)
+    data = resp.json()
+    for i in range(10):
+        print(data[i]['parents'][0]['sha'], end=": ")
+        print(data[i]['commit']['committer']['name'])
