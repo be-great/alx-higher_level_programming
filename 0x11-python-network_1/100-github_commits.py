@@ -3,9 +3,6 @@
 Python script that takes a repository
 name and an owner name,
 and lists the 10 most recent commits
-from the repository using the GitHub API.
-Print all commits by: <sha>: <author name>
-(one per line)
 """
 import requests
 import sys
