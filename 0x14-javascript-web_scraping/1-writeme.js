@@ -3,7 +3,7 @@
 const fs = require('fs');
 const filepath = process.argv[2];
 const content = process.argv[3];
-function writeFile (filepath) {
+function write (filepath) {
   fs.writeFile(filepath, content, (err) => {
     if (err) {
       console.error(err);
@@ -12,5 +12,5 @@ function writeFile (filepath) {
 }
 
 if (filepath && content) {
-  writeFile(filepath, content);
+  write(filepath, content);
 }
