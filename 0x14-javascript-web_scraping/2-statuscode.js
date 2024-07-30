@@ -10,5 +10,5 @@ function getStatus(url) {
     });
 }
 if (url) {
-
+    getStatus(url);
 }
