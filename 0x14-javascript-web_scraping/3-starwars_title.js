@@ -5,7 +5,7 @@ const movieID = process.argv[2];
 const url = 'https://swapi-api.alx-tools.com/api/films/';
 function getTitle(movieID) {
     const fullurl = `${url}${movieID}/`;
-    request.get(url, { json: true}, (error, response, body) => {
+    request.get(fullurl, { json: true}, (error, response, body) => {
         if (response.statusCode == 200) {
             console.log(body.title);
         }
