@@ -24,3 +24,5 @@ Python's simplicity, cross-platform compatibility, and robust community support 
      - [0x02-python-import_modules](0x02-python-import_modules/README.md)
      - [0x03-python-data_structures](0x03-python-data_structures/README.md)
      - [0x04-python-more_data_structures](0x04-python-more_data_structures/README.md)
+     - [0x14-javascript-web_scraping](0x14-javascript-web_scraping/README.md)
+
